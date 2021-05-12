@@ -7,18 +7,19 @@
 	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
 <body>
-  <div align="center">
+  <div align="center" >
   	</br>
   	<h2><b>Student Registration</b></h2>
-	
+	<h4 th:text="'Total Students -  ' + ${totalStudents} " />
 	<tr>		   
-		<h3><a  th:href="@{'/newUser'}">Add new</a></h3>     
+		<h3><a  th:href="@{'/newUser'}">Register</a></h3>     
 	</tr>
 	</br>
 	<tr>
-		<div class="col-sm-5">
+	<div class="col-sm-12">
+		<div class="col-sm-6 float-left">
             <div class="panel-body" align = "center" >
-                <table class="table">
+                <table class="table table-striped table-bordered">
   					<thead class="thead-dark">
 	    				<tr>
 	      					<th>Student ID</th>
@@ -43,8 +44,25 @@
 			</table>
           </div>
         </div> 
-	  </tr>
-	</tbody>
-  </table>
+        <div class="col-sm-6 float-right">
+	        <div class="panel-body" align = "center" >
+	                <table class="table table-striped table-bordered">
+	  					<thead class="thead-dark">
+		    				<tr scope="col">
+		      					<th>Course</th>
+		            			<th>Number of Students Enrolled</th>
+		            			<th>Total Fees</th>
+		   					</tr>
+	  					</thead>
+	  					<tbody>
+      						<tr   th:each="courses : ${uniqueCoursesCount}">
+								<td th:text="${courses.course}">Course</td>
+								<td th:text="${courses.numberOfStudents}">Number of Students Enrolled</td>
+								<td th:text="${courses.totalFees}">Total Fees</td>	    
+							</tr> 
+   						</tbody>
+	  				</table>
+		</div>
+	</div>
 </body>
 </html>

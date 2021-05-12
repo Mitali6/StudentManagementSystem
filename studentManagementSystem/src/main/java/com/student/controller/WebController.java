@@ -1,5 +1,6 @@
 package com.student.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.student.Service.StudentService;
 import com.student.entity.Student;
+import com.student.entity.UniqueCourses;
 
 @Controller
 public class WebController {
@@ -22,8 +24,9 @@ public class WebController {
 	
 	@GetMapping(value = "/")
 	   public String index(Model model) {
-		List<Student> studentList = studentService.getStudentList();
-		model.addAttribute("liststudent", studentList);
+		model.addAttribute("uniqueCoursesCount", studentService.getUniqueCoursesInfo());
+		model.addAttribute("totalStudents", studentService.getTotalStudents());
+		model.addAttribute("liststudent", studentService.getStudentList());
 	    return "index";
 	   }
 	

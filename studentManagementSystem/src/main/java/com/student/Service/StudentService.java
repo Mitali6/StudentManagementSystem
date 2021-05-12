@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.student.Repository.StudentRepository;
 import com.student.entity.Student;
+import com.student.entity.UniqueCourses;
 
 @Service
 public class StudentService {
@@ -31,4 +32,11 @@ public class StudentService {
 		studentRepository.deleteById(id);
 	}
 
+	public Long getTotalStudents() {
+		return studentRepository.count();
+	}
+	
+	public List<UniqueCourses> getUniqueCoursesInfo () {
+		return studentRepository.getUniqueCoursesInfo();
+	}
 }
